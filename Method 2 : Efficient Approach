@@ -1,0 +1,31 @@
+#include<stdio.h>
+
+void swap(int a, int b){
+    int temp = a;
+    a = b;
+    b = temp;
+}
+void getPartition(int a[], int n, int low, int high)
+{
+   int ptr1 = 0, ptr2 = n-1;
+   for (int i=0; i<= ptr2; i++)
+   {
+      if (a[i] < low) 
+      swap(a[i++], a[ptr1++]); 
+      else if (a[i] > high)
+      swap(a[i], a[ptr2--]);
+      else
+      i++;
+    }
+}
+
+int main(){
+
+  int a[] = {2, 89, 34, 16, 17, 10, 11, 78, 30, 19};
+  int n = sizeof(a)/sizeof(a[0]);
+  
+  int low = 15, high = 20;
+
+  getPartition(a, n, low, high);
+
+  for(int i=0; i
